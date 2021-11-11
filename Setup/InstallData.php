@@ -37,6 +37,7 @@ class InstallData implements InstallDataInterface
 
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
 
+        // declare attributes
         $attributes = [
             'organization_name' => [
                 'type'         => 'text',
@@ -68,6 +69,7 @@ class InstallData implements InstallDataInterface
             ]
         ];
 
+        // add attribute to database & form fieldss
         foreach ($attributes as $key => $value) {
             $eavSetup->removeAttribute(\Magento\Customer\Model\Customer::ENTITY, $key);
             $eavSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, $key, $value);

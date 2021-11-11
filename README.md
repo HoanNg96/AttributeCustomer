@@ -17,3 +17,11 @@ Add the following fields for customers to complete when registering:
 - Other
 
 If Other - please specify (1. Organization Name only appear if "Other" is selected )
+
+
+# Construction step
+
+- add attribute to database & form fields (InstallData, Model/Source)
+- add attribute to form when customer registering (layout, templates, block, helper)
+- 
+

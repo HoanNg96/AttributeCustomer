@@ -1,18 +1,18 @@
 require(['jquery', 'domReady!'], function ($) {
     //https://gist.github.com/chrisjhoughton/7890303
 
-    var waitForEl = function (selector, callback) {
-        if (jQuery(selector).length) {
+    var waitForEl = function (company_select, callback) {
+        if (jQuery(company_select).length) {
             callback();
         } else {
             setTimeout(function () {
-                waitForEl(selector, callback);
+                waitForEl(company_select, callback);
             }, 100);
         }
     };
-    var selector = '[name="customer[company_type]"]';
-    waitForEl(selector, function () {
-        // work the magic
+    var company_select = '[name="customer[company_type]"]';
+    waitForEl(company_select, function () {
+        // show/hide when select other company
         if ($('[name="customer[company_type]"]').val() == 4)
             $('[data-index="organization_name"]').show();
         else $('[data-index="organization_name"]').hide();

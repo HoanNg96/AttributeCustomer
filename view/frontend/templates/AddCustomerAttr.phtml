@@ -2,8 +2,8 @@
 
 /** @var \AHT\AttributeCustomer\Block\AddCustomerAttr $block */
 
-$helper = $this->helper('AHT\AttributeCustomer\Helper\Data');
-$allPhone = $helper->getAllPhoneCode();
+/* $helper = $this->helper('AHT\AttributeCustomer\Helper\Data');
+$allPhone = $helper->getAllPhoneCode(); */
 
 ?>
 
@@ -15,7 +15,7 @@ $allPhone = $helper->getAllPhoneCode();
         <div class="control">
             <select name="country-code" id="country-code">
                 <?php
-                foreach ($allPhone as $key => $value) {
+                foreach ($block->getCountryCode() as $key => $value) {
                     ?>
                     <option value="<?= $block->escapeHtml($value) ?>">
                         <?= $block->escapeHtml($block->getCountryName($key)) . " (+" .

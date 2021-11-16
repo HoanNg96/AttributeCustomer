@@ -5,13 +5,32 @@ namespace AHT\AttributeCustomer\Block;
 class AddCustomerAttr extends \Magento\Framework\View\Element\Template
 {
     /**
+     * Country instance
+     *
      * @param \Magento\Directory\Model\CountryFactory
      */
     protected $_countryFactory;
 
+    /**
+     * CompanyType instance
+     *
+     * @param \AHT\AttributeCustomer\Model\CompanyTypeFactory
+     */
     protected $_companytypeFactory;
 
+    /**
+     * Options array
+     *
+     * @var array
+     */
     protected $_options = null;
+
+    /**
+     * Helper data
+     *
+     * @var \AHT\AttributeCustomer\Helper\Data
+     */
+    protected $_helperData;
 
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -21,10 +40,12 @@ class AddCustomerAttr extends \Magento\Framework\View\Element\Template
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Directory\Model\CountryFactory $countryFactory,
         \AHT\AttributeCustomer\Model\CompanyTypeFactory $companytypeFactory,
+        \AHT\AttributeCustomer\Helper\Data $helperData,
         array $data = []
     ) {
         $this->_countryFactory = $countryFactory;
         $this->_companytypeFactory = $companytypeFactory;
+        $this->_helperData = $helperData;
         parent::__construct($context, $data);
     }
 
@@ -59,5 +80,15 @@ class AddCustomerAttr extends \Magento\Framework\View\Element\Template
         }
 
         return $this->_options;
+    }
+
+    /**
+     * Get all country code
+     *
+     * @return array
+     */
+    public function getCountryCode()
+    {
+        return $this->_helperData->getCountryCode();
     }
 }

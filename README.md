@@ -21,5 +21,10 @@ If Other - please specify (1. Organization Name only appear if "Other" is select
 
 # Construction step
 
-- add attribute to database & form fields (InstallData, Model/Source)
-- add attribute to form when customer registering (layout, templates, block, helper)
+1. add attribute to database & form fields
+    - db_schema.xml
+    - InstallData.php. UpgradeData.php
+2. prepare data for attribute
+    - Model, ResourceModel, Collection, Source, Helper
+3. show attribute in Backend & Frontend web
+    - view, Block

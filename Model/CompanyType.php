@@ -2,7 +2,10 @@
 
 namespace AHT\AttributeCustomer\Model;
 
-class CompanyType extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
+use \Magento\Framework\Model\AbstractModel;
+use \Magento\Framework\DataObject\IdentityInterface;
+
+class CompanyType extends AbstractModel implements IdentityInterface
 {
     const CACHE_TAG = 'aht_attributecustomer_company_type';
 

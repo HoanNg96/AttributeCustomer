@@ -15,13 +15,13 @@ $allPhone = $helper->getAllPhoneCode();
         <div class="control">
             <select name="country-code" id="country-code">
                 <?php
-                foreach ($allPhone as $key => $value) :
-                ?>
-                    <option value="<?= $block->escapeHtmlAttr($value) ?>">
-                        <?= $block->escapeHtmlAttr($block->getCountryName($key)) . " (+" .
-                            $block->escapeHtmlAttr($value) . ")" ?></option>
-                <?php
-                endforeach
+                foreach ($allPhone as $key => $value) {
+                    ?>
+                    <option value="<?= $block->escapeHtml($value) ?>">
+                        <?= $block->escapeHtml($block->getCountryName($key)) . " (+" .
+                            $block->escapeHtml($value) . ")" ?></option>
+                    <?php
+                }
                 ?>
             </select>
         </div>
@@ -40,9 +40,10 @@ $allPhone = $helper->getAllPhoneCode();
             <select id="company_type" name="company_type">
                 <?php
                 foreach ($block->getCompanyType() as $value) {
-                ?>
-                    <option value="<?= $value['value'] ?>"><?= $value['label'] ?></option>
-                <?php
+                    ?>
+                    <option value="<?= $block->escapeHtml($value['value']) ?>">
+                    <?= $block->escapeHtml($value['label']) ?></option>
+                    <?php
                 }
                 ?>
             </select>

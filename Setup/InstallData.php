@@ -61,7 +61,7 @@ class InstallData implements InstallDataInterface
                 'type'         => 'int',
                 'label'        => 'Company type',
                 'input'        => 'select',
-                'source'       => 'AHT\AttributeCustomer\Model\Source\CompanyTypeSelect::Class',
+                'source'       => 'AHT\AttributeCustomer\Model\Source\CompanyTypeSelect',
                 'position'     => 1001,
                 'visible'      => true,
                 'required'     => true,

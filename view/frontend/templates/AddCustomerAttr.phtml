@@ -16,11 +16,11 @@ $allPhone = $helper->getAllPhoneCode(); */
             <select name="country-code" id="country-code">
                 <?php
                 foreach ($block->getCountryCode() as $key => $value) {
-                    ?>
+                ?>
                     <option value="<?= $block->escapeHtml($value) ?>">
                         <?= $block->escapeHtml($block->getCountryName($key)) . " (+" .
                             $block->escapeHtml($value) . ")" ?></option>
-                    <?php
+                <?php
                 }
                 ?>
             </select>
@@ -40,10 +40,10 @@ $allPhone = $helper->getAllPhoneCode(); */
             <select id="company_type" name="company_type">
                 <?php
                 foreach ($block->getCompanyType() as $value) {
-                    ?>
+                ?>
                     <option value="<?= $block->escapeHtml($value['value']) ?>">
-                    <?= $block->escapeHtml($value['label']) ?></option>
-                    <?php
+                        <?= $block->escapeHtml($value['label']) ?></option>
+                <?php
                 }
                 ?>
             </select>
@@ -65,7 +65,7 @@ $allPhone = $helper->getAllPhoneCode(); */
             $('#contact_phone_number').change(function() {
                 var code = $('#country-code').val();
                 var phone = $(this).val();
-                $('#contact_phone_number_hidden').val("+" + code + phone);
+                $('#contact_phone_number_hidden').val("(+" + code + ")" + phone);
             });
             $('#company_type').change(function() {
                 if ($(this).val() == 4) {

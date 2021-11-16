@@ -244,6 +244,10 @@ class Data extends AbstractHelper
         ];
     }
 
+    /**
+     * get all country phone code
+     * @return array
+     */
     public function getAllPhoneCode()
     {
         return $this->array;

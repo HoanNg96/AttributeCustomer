@@ -2,19 +2,47 @@
 
 namespace AHT\AttributeCustomer\Model\Source;
 
-class CompanyTypeSelect extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
+use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
+
+class CompanyTypeSelect extends AbstractSource implements OptionSourceInterface
 {
+    /**
+     * CompanyType instance
+     *
+     * @var \AHT\AttributeCustomer\Model\CompanyTypeFactory
+     */
+    protected $_companytypeFactory;
+
+    /**
+     * @param \AHT\AttributeCustomer\Model\CompanyTypeFactory $companytypeFactory
+     */
+    public function __construct(
+        \AHT\AttributeCustomer\Model\CompanyTypeFactory $companytypeFactory
+    ) {
+        $this->_companytypeFactory = $companytypeFactory;
+    }
+
+    /**
+     * get all value for company type select
+     * @return array
+     */
     public function getAllOptions()
     {
-        if ($this->_options === null) {
-            $this->_options = [
-                ['label' => __('Please select'), 'value' => ''],
-                ['label' => __('CBD Manufacturer'), 'value' => 1],
-                ['label' => __('CBD Brand and Marketing company'), 'value' => 2],
-                ['label' => __('CBD Extractor'), 'value' => 3],
-                ['label' => __('Other'), 'value' => 4]
-            ];
+        if (!$this->_options) {
+            /* get all commission type */
+            $collection = $this->_companytypeFactory->create()->getCollection();
+
+            foreach ($collection as $item) {
+                $this->_options[] = [
+                    /* label = company type name */
+                    'label' => $item->getTypeName(),
+                    /* value = company type id */
+                    'value' => $item->getEntityId(),
+                ];
+            }
         }
+
         return $this->_options;
     }
 }

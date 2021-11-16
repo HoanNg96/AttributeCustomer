@@ -1,9 +1,10 @@
 <?php
 
-/** @var \AHT\AttributeCustomer\Block\Template $block */
+/** @var \AHT\AttributeCustomer\Block\AddCustomerAttr $block */
 
 $helper = $this->helper('AHT\AttributeCustomer\Helper\Data');
 $allPhone = $helper->getAllPhoneCode();
+
 ?>
 
 <fieldset class="fieldset">
@@ -16,7 +17,9 @@ $allPhone = $helper->getAllPhoneCode();
                 <?php
                 foreach ($allPhone as $key => $value) :
                 ?>
-                    <option value="<?= $value ?>"><?= $block->getCountryName($key) . " (+" . $value . ")" ?></option>
+                    <option value="<?= $block->escapeHtmlAttr($value) ?>">
+                        <?= $block->escapeHtmlAttr($block->getCountryName($key)) . " (+" .
+                            $block->escapeHtmlAttr($value) . ")" ?></option>
                 <?php
                 endforeach
                 ?>
@@ -35,12 +38,13 @@ $allPhone = $helper->getAllPhoneCode();
         <label for="company_type" class="label">Company type</label>
         <div class="control">
             <select id="company_type" name="company_type">
-                <option value="" disabled>Please select</option>
-                <option value="1">CBD Manufacturer</option>
-                <option value="2">CBD Brand and Marketing company</option>
-                <option value="3">CBD Extractor</option>
-                <option value="4">Other</option>
-                </option>
+                <?php
+                foreach ($block->getCompanyType() as $value) {
+                ?>
+                    <option value="<?= $value['value'] ?>"><?= $value['label'] ?></option>
+                <?php
+                }
+                ?>
             </select>
         </div>
     </div>

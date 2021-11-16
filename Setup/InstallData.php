@@ -61,7 +61,7 @@ class InstallData implements InstallDataInterface
                 'type'         => 'int',
                 'label'        => 'Company type',
                 'input'        => 'select',
-                'source'       => 'AHT\AttributeCustomer\Model\Source\CompanyTypeSelect',
+                'source'       => 'AHT\AttributeCustomer\Model\Source\CompanyTypeSelect::Class',
                 'position'     => 1001,
                 'visible'      => true,
                 'required'     => true,
@@ -69,7 +69,7 @@ class InstallData implements InstallDataInterface
             ]
         ];
 
-        // add attribute to database & form fieldss
+        // add attribute to database & form fields
         foreach ($attributes as $key => $value) {
             $eavSetup->removeAttribute(\Magento\Customer\Model\Customer::ENTITY, $key);
             $eavSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, $key, $value);
